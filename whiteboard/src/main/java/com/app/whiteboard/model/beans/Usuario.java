@@ -3,7 +3,7 @@ package com.app.whiteboard.model.beans;
 import java.sql.Date;
 
 public class Usuario {
-    private String idUsuario;
+    private int idUsuario;
     private String nombre;
     private String correo;
     private String password;
@@ -13,11 +13,11 @@ public class Usuario {
     private Date fechaRegistro;
     private Date fechaEdicion;
 
-    public String getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(String idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
