@@ -3,19 +3,18 @@ package com.app.whiteboard.model.beans;
 import java.sql.Date;
 
 public class Facultad {
-    private int idSemestre;
+    private int idFacultad;
     private String nombre;
-    private Usuario administrador;
-    private boolean habilitado;
+    private Universidad universidad;
     private Date fechaRegistro;
     private Date fechaEdicion;
 
-    public int getIdSemestre() {
-        return idSemestre;
+    public int getIdFacultad() {
+        return idFacultad;
     }
 
-    public void setIdSemestre(int idSemestre) {
-        this.idSemestre = idSemestre;
+    public void setIdFacultad(int idFacultad) {
+        this.idFacultad = idFacultad;
     }
 
     public String getNombre() {
@@ -26,20 +25,12 @@ public class Facultad {
         this.nombre = nombre;
     }
 
-    public Usuario getAdministrador() {
-        return administrador;
+    public Universidad getUniversidad() {
+        return universidad;
     }
 
-    public void setAdministrador(Usuario administrador) {
-        this.administrador = administrador;
-    }
-
-    public boolean isHabilitado() {
-        return habilitado;
-    }
-
-    public void setHabilitado(boolean habilitado) {
-        this.habilitado = habilitado;
+    public void setUniversidad(Universidad universidad) {
+        this.universidad = universidad;
     }
 
     public Date getFechaRegistro() {
