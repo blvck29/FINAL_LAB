@@ -1,10 +1,10 @@
 <%@ page import="com.app.whiteboard.model.beans.Usuario" %>
 <%@ page import="com.app.whiteboard.model.beans.Facultad" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <%
     Usuario user = (Usuario) session.getAttribute("usuario");
-    if (user!= null && user.getIdRol() == 3){
+    if (user!= null && request.getSession(false) != null && user.getIdRol() == 3){
 %>
 
 <% Facultad facultad = (Facultad) request.getAttribute("facultad"); %>
@@ -77,7 +77,7 @@
                     <strong><p class="mb-1">Universidad: <%= facultad.getUniversidad().getNombre()%></p></strong>
                     <strong><p class="mb-3">Facultad: <%= facultad.getNombre()%></p></strong>
 
-                    <a href="#" class="btn btn-dark">Comenzar</a>
+                    <a href="decano?action=cursos" class="btn btn-dark">Cursos</a>
 
                 </div>
                 <div class="col-md-6 d-none d-md-block pr-0" style="background-size:cover;background-image:url('resources/images/image_1.jpg');">	</div>
@@ -101,7 +101,6 @@
                         El Departamento Académico de Ciencias de la PUCP es la unidad académica que agrupa a los docentes de las Secciones Física, Matemáticas y Química.                    </p>
                     <div>
                         <small class="d-block"><a class="text-muted" href="https://www.pucp.edu.pe"><%= facultad.getUniversidad().getNombre()%></a></small>
-                        <small class="text-muted">Dec 12 &middot; 5 min read</small>
                     </div>
                 </div>
             </div>
@@ -115,12 +114,12 @@
                     <img height="80" src="<%=facultad.getUniversidad().getLogoUrl()%>">
                     <div class="pl-3">
                         <h2 class="mb-2 h6 font-weight-bold">
-                            <a class="text-dark" href="./article.html">Nasa's IceSat space laser makes height maps of Earth</a>
+                            CURSO: Teoría de Campos Electromagnéticos
                         </h2>
                         <div class="card-text text-muted small">
-                            Jake Bittle in LOVE/HATE
+                            Docente del curso:
                         </div>
-                        <small class="text-muted">Dec 12 &middot; 5 min read</small>
+                        <small class="text-muted"> Creado: Dec 12 2023</small>
                     </div>
                 </div>
 
