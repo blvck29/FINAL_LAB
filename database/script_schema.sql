@@ -1,4 +1,3 @@
--- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
@@ -167,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `lab_9`.`evaluaciones` (
     FOREIGN KEY (`idsemestre`)
     REFERENCES `lab_9`.`semestre` (`idsemestre`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 5
 DEFAULT CHARACTER SET = utf8mb3;
 
 
@@ -212,3 +211,107 @@ DEFAULT CHARACTER SET = utf8mb3;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+-- -----------------------------------------------------
+-- Datos: Tabla rol
+-- -----------------------------------------------------
+INSERT INTO `lab_9`.`rol` (`idrol`, `nombre`) VALUES ('1', 'Administrador');
+INSERT INTO `lab_9`.`rol` (`idrol`, `nombre`) VALUES ('2', 'Rector');
+INSERT INTO `lab_9`.`rol` (`idrol`, `nombre`) VALUES ('3', 'Decano');
+INSERT INTO `lab_9`.`rol` (`idrol`, `nombre`) VALUES ('4', 'Docente');
+
+-- -----------------------------------------------------
+-- Datos: Tabla usuario
+-- -----------------------------------------------------
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('1', 'Administrador', 'admin@pucp.edu.pe', 'acceso123', '1', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('2', 'Carlos Garatea', 'rector@pucp.edu.pe', 'acceso123', '2', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('3', 'Francisco Rumiche', 'decano.ciencias@pucp.edu.pe', 'acceso123', '3', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('4', 'Manuel Yarlequé', 'yarleque@pucp.edu.pe', 'acceso123', '4', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('5', 'Stuardo Lucho', 'lucho@pucp.edu.pe', 'acceso123', '4', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('6', 'Jorge Benavides', 'jo.benas@pucp.edu.pe', 'acceso123', '4', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('7', 'Epifanio Jorge', 'e.jorge@pucp.edu.pe', 'acceso123', '4', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('8', 'Juan Huapaya', 'juan.h@pucp.edu.pe', 'acceso123', '4', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('9', 'Juan Jave', 'juan.jave@pucp.edu.pe', 'acceso123', '4', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('10', 'Stefano Romero', 'st.romero@pucp.edu.pe', 'acceso123', '4', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('11', 'César Santivañez', 'cesar.santi@pucp.edu.pe', 'acceso123', '4', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('12', 'Gumercino Bartra', 'gumer@pucp.edu.pe', 'acceso123', '4', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('13', 'Nicola Tesla', 'nicola@pucp.edu.pe', 'acceso123', '4', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('14', 'Robert Oppenheimer', 'robert@pucp.edu.pe', 'acceso123', '4', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`) 
+VALUES ('15', 'Fernando Barreto', 'fernando@pucp.edu.pe', 'acceso123', '4', '0');
+INSERT INTO `lab_9`.`usuario` (`idusuario`, `nombre`, `correo`, `password`, `idrol`, `cantidad_ingresos`)
+VALUES ('16', 'Walter White', 'ww@pucp.edu.pe', 'acceso123', '4', '0');
+
+-- -----------------------------------------------------
+-- Datos: Tabla universidad
+-- -----------------------------------------------------
+INSERT INTO `lab_9`.`universidad` (`iduniversidad`, `nombre`, `logo_url`, `idadministrador`) VALUES ('1', 'Pontificia Universidad Católica del Perú (PUCP)', 'resources/images/logo_pucp.jpg', '1');
+
+
+-- -----------------------------------------------------
+-- Datos: Tabla semestre
+-- -----------------------------------------------------
+INSERT INTO `lab_9`.`semestre` (`idsemestre`, `nombre`, `idadmistrador`, `habilitado`) VALUES ('1', '2022-1', '1', '0');
+INSERT INTO `lab_9`.`semestre` (`idsemestre`, `nombre`, `idadmistrador`, `habilitado`) VALUES ('2', '2022-2', '1', '0');
+INSERT INTO `lab_9`.`semestre` (`idsemestre`, `nombre`, `idadmistrador`, `habilitado`) VALUES ('3', '2023-0', '1', '0');
+INSERT INTO `lab_9`.`semestre` (`idsemestre`, `nombre`, `idadmistrador`, `habilitado`) VALUES ('4', '2023-1', '1', '0');
+INSERT INTO `lab_9`.`semestre` (`idsemestre`, `nombre`, `idadmistrador`, `habilitado`) VALUES ('5', '2023-2', '1', '1');
+
+
+-- -----------------------------------------------------
+-- Datos: Tabla facultades
+-- -----------------------------------------------------
+INSERT INTO `lab_9`.`facultad` (`idfacultad`, `nombre`, `iduniversidad`) VALUES ('1', 'Ciencias e Ingeniería', '1');
+
+-- -----------------------------------------------------
+-- Datos: Tabla cursos
+-- -----------------------------------------------------
+INSERT INTO `lab_9`.`curso` (`idcurso`, `codigo`, `nombre`, `idfacultad`) 
+VALUES ('1', '1IEE07', 'Teoria de Campos Electromagnéticos', '1');
+INSERT INTO `lab_9`.`curso` (`idcurso`, `codigo`, `nombre`, `idfacultad`) 
+VALUES ('2', 'TEL132', 'Propagación y Radiación Electromagnética', '1');
+INSERT INTO `lab_9`.`curso` (`idcurso`, `codigo`, `nombre`, `idfacultad`) 
+VALUES ('3', 'TEL133', 'Teoria de Comunicaciones 1', '1');
+INSERT INTO `lab_9`.`curso` (`idcurso`, `codigo`, `nombre`, `idfacultad`) 
+VALUES ('4', 'TEL136', 'Teoria de Comunicaciones 2', '1');
+INSERT INTO `lab_9`.`curso` (`idcurso`, `codigo`, `nombre`, `idfacultad`) 
+VALUES ('5', '1IEE06', 'Arquitectura de Computadoras', '1');
+INSERT INTO `lab_9`.`curso` (`idcurso`, `codigo`, `nombre`, `idfacultad`) 
+VALUES ('6', 'TEL134', 'Ciberseguridad y Hacking Ético', '1');
+INSERT INTO `lab_9`.`curso` (`idcurso`, `codigo`, `nombre`, `idfacultad`) 
+VALUES ('7', 'INF238', 'Redes de Computadoras', '1');
+INSERT INTO `lab_9`.`curso` (`idcurso`, `codigo`, `nombre`, `idfacultad`) 
+VALUES ('8', 'TEL225', 'Protocolos de Enrutamiento', '1');
+INSERT INTO `lab_9`.`curso` (`idcurso`, `codigo`, `nombre`, `idfacultad`) 
+VALUES ('9', 'TEL223', 'Ingeniería de Tráfico en Telecomunicaciones', '1');
+INSERT INTO `lab_9`.`curso` (`idcurso`, `codigo`, `nombre`, `idfacultad`) 
+VALUES ('10', 'IEE352', 'Procesamiento Digital de Señales', '1');
+INSERT INTO `lab_9`.`curso` (`idcurso`, `codigo`, `nombre`, `idfacultad`) 
+VALUES ('11', 'TEL137', 'Gestión de Servicios De TICs', '1');
+INSERT INTO `lab_9`.`curso` (`idcurso`, `codigo`, `nombre`, `idfacultad`) 
+VALUES ('12', 'TEL140', 'Telemática Forense', '1');
+
+-- -----------------------------------------------------
+-- Datos: Tabla rol
+-- -----------------------------------------------------
+
+
+
+-- -----------------------------------------------------
+-- Datos: Tabla rol
+-- -----------------------------------------------------

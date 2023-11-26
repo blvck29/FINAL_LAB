@@ -77,7 +77,7 @@
     <div class="row mt-4 pb-1">
         <div class="col-md-6">
             <h2 class="h3 font-weight-bold pb-1">
-                Editar Evaluación
+                Editar Nota
             </h2>
         </div>
     </div>
@@ -132,6 +132,11 @@
                 <%=fCreation%>
             </p>
         </div>
+
+        <div class="col-md-4">
+            <p>Semestre: <%=evaluacion.getSemestre().getNombre()%> </p>
+        </div>
+
     </div>
 
     <hr>

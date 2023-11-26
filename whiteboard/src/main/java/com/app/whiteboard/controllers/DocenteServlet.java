@@ -1,6 +1,7 @@
 package com.app.whiteboard.controllers;
 
 import com.app.whiteboard.model.beans.Facultad;
+import com.app.whiteboard.model.beans.Semestre;
 import com.app.whiteboard.model.beans.Universidad;
 import com.app.whiteboard.model.beans.Usuario;
 import com.app.whiteboard.model.daos.EvaluacionesDao;
@@ -55,8 +56,10 @@ public class DocenteServlet extends HttpServlet {
 
                         if(valid){
                             ArrayList<EvaluacionEnLista> evaluacionesList = evaluacionesDao.totalList(idCurso);
+                            Semestre semestre = evaluacionesDao.getCurrentSemestre();
                             request.setAttribute("evaluacionesList", evaluacionesList);
                             request.setAttribute("idCurso",idCurso);
+                            request.setAttribute("semestre",semestre);
                             request.getRequestDispatcher("pages/docente/evaluaciones_list.jsp").forward(request, response);
                         } else {
                             request.setAttribute("facultad", facultad);

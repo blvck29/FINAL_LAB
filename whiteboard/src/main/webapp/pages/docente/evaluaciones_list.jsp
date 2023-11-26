@@ -2,6 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.app.whiteboard.model.dtos.DocenteEnLista" %>
 <%@ page import="com.app.whiteboard.model.dtos.EvaluacionEnLista" %>
+<%@ page import="com.app.whiteboard.model.beans.Semestre" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <%
@@ -11,6 +12,7 @@
 
 <% ArrayList<EvaluacionEnLista> evaluacionesList = (ArrayList<EvaluacionEnLista>) request.getAttribute("evaluacionesList"); %>
 <% String idCurso = (String) request.getAttribute("idCurso"); %>
+<% Semestre semestreActual = (Semestre) request.getAttribute("semestre"); %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -77,15 +79,17 @@
 <div class="container">
 
     <div class="row mt-5 pb-1">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <h2 class="h3 font-weight-bold pb-1">
                 Registrar nueva Nota
             </h2>
+
+            <p>Los nuevos registros se harán sobre el semestre actual: <%=semestreActual.getNombre()%></p>
         </div>
     </div>
-    <hr>
+    <hr style="padding-top:0;margin-top:0;">
 
-    <div class="pt-2 pb-0 position-relative">
+    <div class="pt-0 pb-0 position-relative">
         <div class="p-2 h-100 tofront">
             <div class="row">
                 <form class="form-inline" method="POST" action="docente?action=new_evaluaciones">
@@ -121,7 +125,7 @@
     <div class="row pb-1">
         <div class="col-md-6">
             <h2 class="h3 font-weight-bold pb-1">
-                Lista de Evaluaciones del Curso
+                Lista de Notas del Curso
             </h2>
         </div>
     </div>
@@ -138,6 +142,7 @@
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
+                            <th scope="col">Semestre</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Código</th>
                             <th scope="col">Correo</th>
@@ -154,7 +159,7 @@
                         <% if (evaluacionesList.isEmpty() || evaluacionesList.get(0).getNombreEstudiantes() == null) { %>
 
                         <tr>
-                            <td colspan="9">No hay evaluaciones registradas para este curso.</td>
+                            <td colspan="10">No hay evaluaciones registradas para este curso.</td>
                         </tr>
 
                         <% } else { %>
@@ -164,6 +169,7 @@
 
                         <tr>
                             <td><%=i%></td>
+                            <td><%=evaluacion.getSemestre().getNombre()%></td>
                             <td><%=evaluacion.getNombreEstudiantes()%></td>
                             <td><%=evaluacion.getCodigoEstudiantes()%></td>
                             <td><%=evaluacion.getCorreoEstudiantes()%></td>
@@ -193,11 +199,23 @@
                                 </a>
                             </td>
 
+                            <%if(evaluacion.getSemestre().getIdSemestre() == semestreActual.getIdSemestre()){%>
+
                             <td class="text-center">
                                 <a href="#" class="btn btn-danger btn-borrar" data-evaluacion-id="<%=evaluacion.getIdEvaluaciones()%>">
                                     <i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
                                 </a>
                             </td>
+
+                            <%} else {%>
+
+                            <td class="text-center">
+                                <a href="#" class="btn btn-danger">
+                                    <i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
+                                </a>
+                            </td>
+
+                            <%}%>
 
                         </tr>
                         <% i++; } %>
