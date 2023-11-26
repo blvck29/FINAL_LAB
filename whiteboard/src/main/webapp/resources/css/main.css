@@ -52,6 +52,10 @@ hr {
     height: 0;
     overflow: visible; }
 
+hr {
+    border-top: 1px solid rgb(0 0 0 / 70%) !important;
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 0.5rem; }
@@ -5417,6 +5421,10 @@ button.bg-orange:focus {
 .bg-lightblue {
     background-color: #c6dfe2 !important; }
 
+
+.bg-main {
+    background-color: rgba(217, 217, 217, 0.3) !important; }
+
 a.bg-lightblue:hover, a.bg-lightblue:focus,
 button.bg-lightblue:hover,
 button.bg-lightblue:focus {
@@ -5424,6 +5432,10 @@ button.bg-lightblue:focus {
 
 .bg-white {
     background-color: #fff !important; }
+
+.bg-no-white {
+    background-color: rgba(236, 236, 236, 0.8) !important;
+    backdrop-filter: blur(50px); }
 
 .bg-transparent {
     background-color: transparent !important; }
@@ -8916,13 +8928,13 @@ a.text-dark:hover {
     transition: all .08s;
     font-weight: 400; }
 .navbar .highlight .nav-link {
-    color: #03a87c !important;
-    border: 1px solid #03a87c;
+    color: #03a3a8 !important;
+    border: 1px solid #03a3a8;
     padding: 0.3rem 1rem;
     border-radius: 3px;
     font-size: .93rem; }
 .navbar .highlight .nav-link:hover {
-    background: #03a87c;
+    background: #03a3a8;
     color: #fff !important; }
 
 

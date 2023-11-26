@@ -69,10 +69,10 @@ public class UsuarioDao extends DaoBase {
                     user.setCorreo(rs.getString(3));
                     /* No guardo el password por seguridad */
                     user.setIdRol(rs.getInt(5));
-                    user.setUltimoIngreso(rs.getDate(6));
+                    user.setUltimoIngreso(rs.getTimestamp(6));
                     user.setCantidadIngresos(rs.getInt(7));
-                    user.setFechaRegistro(rs.getDate(8));
-                    user.setFechaEdicion(rs.getDate(9));
+                    user.setFechaRegistro(rs.getTimestamp(8));
+                    user.setFechaEdicion(rs.getTimestamp(9));
                 }
 
             }
@@ -101,10 +101,10 @@ public class UsuarioDao extends DaoBase {
                     user.setCorreo(rs.getString(3));
                     /* No guardo el password por seguridad */
                     user.setIdRol(rs.getInt(5));
-                    user.setUltimoIngreso(rs.getDate(6));
+                    user.setUltimoIngreso(rs.getTimestamp(6));
                     user.setCantidadIngresos(rs.getInt(7));
-                    user.setFechaRegistro(rs.getDate(8));
-                    user.setFechaEdicion(rs.getDate(9));
+                    user.setFechaRegistro(rs.getTimestamp(8));
+                    user.setFechaEdicion(rs.getTimestamp(9));
                 }
 
             }

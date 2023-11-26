@@ -1,6 +1,7 @@
 package com.app.whiteboard.model.beans;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Usuario {
     private int idUsuario;
@@ -8,10 +9,10 @@ public class Usuario {
     private String correo;
     private String password;
     private int idRol;
-    private Date ultimoIngreso;
+    private Timestamp ultimoIngreso;
     private int cantidadIngresos;
-    private Date fechaRegistro;
-    private Date fechaEdicion;
+    private Timestamp fechaRegistro;
+    private Timestamp fechaEdicion;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -53,11 +54,11 @@ public class Usuario {
         this.idRol = idRol;
     }
 
-    public Date getUltimoIngreso() {
+    public Timestamp getUltimoIngreso() {
         return ultimoIngreso;
     }
 
-    public void setUltimoIngreso(Date ultimoIngreso) {
+    public void setUltimoIngreso(Timestamp ultimoIngreso) {
         this.ultimoIngreso = ultimoIngreso;
     }
 
@@ -69,19 +70,19 @@ public class Usuario {
         this.cantidadIngresos = cantidadIngresos;
     }
 
-    public Date getFechaRegistro() {
+    public Timestamp getFechaRegistro() {
         return fechaRegistro;
     }
 
-    public void setFechaRegistro(Date fechaRegistro) {
+    public void setFechaRegistro(Timestamp fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public Date getFechaEdicion() {
+    public Timestamp getFechaEdicion() {
         return fechaEdicion;
     }
 
-    public void setFechaEdicion(Date fechaEdicion) {
+    public void setFechaEdicion(Timestamp fechaEdicion) {
         this.fechaEdicion = fechaEdicion;
     }
 }

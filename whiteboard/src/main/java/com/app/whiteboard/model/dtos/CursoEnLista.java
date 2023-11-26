@@ -1,15 +1,15 @@
-package com.app.whiteboard.model.beans;
+package com.app.whiteboard.model.dtos;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
-public class Curso {
+public class CursoEnLista {
+
     private int idCurso;
     private String codigo;
     private String nombre;
-    private int idFacultad;
-    private Timestamp fechaRegistro;
     private Timestamp fechaEdicion;
+    private Timestamp fechaRegistro;
+    private int cantDocentes;
 
     public int getIdCurso() {
         return idCurso;
@@ -35,12 +35,12 @@ public class Curso {
         this.nombre = nombre;
     }
 
-    public int getIdFacultad() {
-        return idFacultad;
+    public Timestamp getFechaEdicion() {
+        return fechaEdicion;
     }
 
-    public void setIdFacultad(int idFacultad) {
-        this.idFacultad = idFacultad;
+    public void setFechaEdicion(Timestamp fechaEdicion) {
+        this.fechaEdicion = fechaEdicion;
     }
 
     public Timestamp getFechaRegistro() {
@@ -51,11 +51,11 @@ public class Curso {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public Timestamp getFechaEdicion() {
-        return fechaEdicion;
+    public int getCantDocentes() {
+        return cantDocentes;
     }
 
-    public void setFechaEdicion(Timestamp fechaEdicion) {
-        this.fechaEdicion = fechaEdicion;
+    public void setCantDocentes(int cantDocentes) {
+        this.cantDocentes = cantDocentes;
     }
 }

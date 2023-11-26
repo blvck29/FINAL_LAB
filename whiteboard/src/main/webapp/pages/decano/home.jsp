@@ -30,7 +30,7 @@
 
 <body>
 
-<nav class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+<nav class="topnav navbar navbar-expand-lg navbar-light bg-no-white fixed-top">
     <div class="container">
         <div>
             <img src="favicon.png" width="50px" height="auto" alt="logo" style="padding-right: 10px; padding-bottom: 5px">
@@ -63,24 +63,22 @@
     </div>
 </nav>
 
+<div class="pt-3"></div>
+
 
 <div class="container">
-    <div class="jumbotron jumbotron-fluid mb-3 pt-0 pb-0 bg-lightblue position-relative">
+    <div class="jumbotron jumbotron-fluid mb-1 pt-0 pb-0 bg-main position-relative">
         <div class="pl-4 pr-0 h-100 tofront">
             <div class="row justify-content-between">
                 <div class="col-md-6 pt-6 pb-6 align-self-center">
-                    <h1 class="secondfont mb-3 font-weight-bold">Bienvenido, Decano <%=user.getNombre()%></h1>
+                    <h1 class="mb-3 font-weight-bold">Bienvenido, Decano <%=user.getNombre()%></h1>
                     <p class="mb-3">
                         Aquí podrá gestionar a los docentes y cursos de su facultad asignada.
                     </p>
-
                     <strong><p class="mb-1">Universidad: <%= facultad.getUniversidad().getNombre()%></p></strong>
                     <strong><p class="mb-3">Facultad: <%= facultad.getNombre()%></p></strong>
-
-                    <a href="decano?action=cursos" class="btn btn-dark">Cursos</a>
-
                 </div>
-                <div class="col-md-6 d-none d-md-block pr-0" style="background-size:cover;background-image:url('resources/images/image_1.jpg');">	</div>
+                <div class="col-md-6 d-none d-md-block pr-0" style="background-size:cover;background-image:url('resources/images/img1.jpg');">	</div>
             </div>
         </div>
     </div>
@@ -88,25 +86,23 @@
 
 
 
-<div class="container pt-4 pb-4">
+<div class="container pt-3 pb-0">
+    <hr>
     <div class="row">
-        <div class="col-lg-6">
-            <div class="card border-0 mb-4 box-shadow h-xl-300">
-                <div style="background-image: url('resources/images/img_2.jpg'); height: 150px;    background-size: cover;    background-repeat: no-repeat;"></div>
-                <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
-                    <h2 class="h4 font-weight-bold">
-                        <a class="text-dark" href="https://departamento-ciencias.pucp.edu.pe/publicaciones/articulos-academicos">Visitar la página de artículos de la Universidad</a>
-                    </h2>
-                    <p class="card-text">
-                        El Departamento Académico de Ciencias de la PUCP es la unidad académica que agrupa a los docentes de las Secciones Física, Matemáticas y Química.                    </p>
-                    <div>
-                        <small class="d-block"><a class="text-muted" href="https://www.pucp.edu.pe"><%= facultad.getUniversidad().getNombre()%></a></small>
-                    </div>
-                </div>
+
+        <div class="row pb-3">
+            <div class="col-md-6">
+                <h2 class="h3 font-weight-bold pb-3">
+                    Cursos recientemente agregados
+                </h2>
+            </div>
+            <div class="col-md-6 text-right">
+                <a href="decano?action=cursos" class="btn btn-gray">→ Ver todos los cursos</a>
             </div>
         </div>
+
         <div class="col-lg-6">
-            <div class="flex-md-row mb-4 box-shadow h-xl-300">
+            <div class="flex-md-row mb-1 box-shadow h-xl-300">
 
                 <% for (int i = 0; i < 3; i++) {%>
 
@@ -114,7 +110,7 @@
                     <img height="80" src="<%=facultad.getUniversidad().getLogoUrl()%>">
                     <div class="pl-3">
                         <h2 class="mb-2 h6 font-weight-bold">
-                            CURSO: Teoría de Campos Electromagnéticos
+                            CURSO: Teoría de Campos Electromagnéticos <span class="badge badge-secondary">TEL</span>
                         </h2>
                         <div class="card-text text-muted small">
                             Docente del curso:
@@ -127,8 +123,34 @@
 
             </div>
         </div>
+        <div class="col-lg-6">
+            <div class="flex-md-row mb-1 box-shadow h-xl-300">
+
+                <% for (int i = 0; i < 3; i++) {%>
+
+                <div class="mb-3 d-flex align-items-center">
+                    <img height="80" src="<%=facultad.getUniversidad().getLogoUrl()%>">
+                    <div class="pl-3">
+                        <h2 class="mb-2 h6 font-weight-bold">
+                            CURSO: Teoría de Campos Electromagnéticos <span class="badge badge-secondary">TEL</span>
+                        </h2>
+                        <div class="card-text text-muted small">
+                            Docente del curso:
+                        </div>
+                        <small class="text-muted"> Creado: Dec 12 2023</small>
+                    </div>
+                </div>
+
+                <%}%>
+
+            </div>
+        </div>
+
     </div>
 </div>
+
+
+
 
 
 <div class="container mt-1">

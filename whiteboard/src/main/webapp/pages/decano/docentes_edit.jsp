@@ -2,6 +2,7 @@
 <%@ page import="com.app.whiteboard.model.beans.Facultad" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.app.whiteboard.model.dtos.DocenteEnLista" %>
+<%@ page import="com.app.whiteboard.model.beans.Curso" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <%
@@ -9,6 +10,8 @@
     if (user!= null && request.getSession(false) != null && user.getIdRol() == 3){
 %>
 
+<% DocenteEnLista docente = (DocenteEnLista) request.getAttribute("docente"); %>
+<% ArrayList<Curso> cursosDelDocente = (ArrayList<Curso>) request.getAttribute("cursosDelDocente"); %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -38,7 +41,6 @@
 
 
 <body>
-
 
 <nav class="topnav navbar navbar-expand-lg navbar-light bg-no-white fixed-top">
     <div class="container">
@@ -73,14 +75,14 @@
     </div>
 </nav>
 
-
+<div class="pt-4"></div>
 
 <div class="container">
 
-    <div class="row mt-5 pb-1">
+    <div class="row mt-4 pb-1">
         <div class="col-md-6">
             <h2 class="h3 font-weight-bold pb-1">
-                Crear un nuevo Curso
+                Editar Docente
             </h2>
         </div>
     </div>
@@ -89,105 +91,136 @@
     <div class="pt-2 pb-0 position-relative">
         <div class="p-2 h-100 tofront">
             <div class="row">
-                <form class="form-inline" method="POST" action="decano?action=new_docentes">
+
+
+                <form class="form-inline" method="POST" action="decano?action=edit_docentes">
+                    <input type="hidden" name="idEditar" value="<%=docente.getIdDocente()%>">
                     <div class="col">
-                        <input required type="text" class="form-control mb-2 mr-sm-2" name="nombre" placeholder="Nombre y Apellido">
+                        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <label for="nombre">Nombre</label>
+                            <input required type="text" class="form-control mb-2 mr-sm-2" name="nombre" id="nombre" value="<%=docente.getNombre()%>">
+                        </div>
                     </div>
                     <div class="col">
-                        <input required type="text" class="form-control mb-2 mr-sm-2" name="correo" placeholder="Correo">
+                        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <label for="correo">Correo</label>
+                            <input disabled type="text" class="form-control mb-2 mr-sm-2" name="correo" id="correo" placeholder="<%=docente.getCorreo()%>">
+                        </div>
                     </div>
                     <div class="col">
-                        <input required type="text" class="form-control mb-2 mr-sm-2" name="password" placeholder="Contraseña">
+                        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <label for="password">Contraseña</label>
+                            <input disabled type="text" class="form-control mb-2 mr-sm-2" name="password" id="password" placeholder="*********">
+                        </div>
                     </div>
+
                     <div class="col">
-                        <button type="submit" class="btn btn-primary mb-2">Crear</button>
+                        <button type="submit" class="btn btn-primary mb-2">Guardar</button>
                         <a href="decano?action=docentes" class="btn btn-gray mb-2 ml-md-2">Cancelar</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <hr>
-</div>
 
+    <div class="row pt-2">
+        <div class="col-md-4">
+            <p>Última edición:
+                <% String fEdit = null;
+                    if (docente.getFechaEdicion() != null) {
+                        java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                        fEdit = dateFormat.format(docente.getFechaEdicion());
+                    } else { fEdit = "Nunca editado"; } %>
+                <%=fEdit%>
+            </p>
+        </div>
 
-<div class="pt-4"></div>
+        <div class="col-md-4">
+            <p>Fecha de Creación:
+                <% String fCreation = null;
+                    if (docente.getFechaRegistro() != null) {
+                        java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                        fCreation = dateFormat.format(docente.getFechaRegistro());
+                    } else { fCreation = " "; }%>
+                <%=fCreation%>
+            </p>
+        </div>
 
-<div class="container">
-
-    <div class="row pb-1">
-        <div class="col-md-6">
-            <h2 class="h3 font-weight-bold pb-1">
-                Lista de Docentes
-            </h2>
+        <div class="col-md-4">
+            <p>Accesos a la Plataforma:
+                <% String value = null;
+                    if (docente.getCantIngresos() > 0) {
+                        int cantLogins = docente.getCantIngresos();
+                        value = String.valueOf(cantLogins) + " veces";
+                    } else { value = "Nunca ha ingresado"; }%>
+                <%=value%>
+            </p>
         </div>
     </div>
+
     <hr>
+
+
 
     <div class="pt-2 pb-0 position-relative">
         <div class="p-2 h-100 tofront">
             <div class="row justify-content-between">
 
                 <div class="table-container">
-                    <table class="table table-hover align-self-center table-bordered" id="docentes_table">
+                    <table class="table table-hover align-self-center table-bordered" id="cursos_table">
 
 
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Correo</th>
-                            <th scope="col">Ultimo Ingreso</th>
-                            <th scope="col">Cursos Asignados</th>
-                            <th scope="col">Editar</th>
-                            <th scope="col">Borrar</th>
+                            <th scope="col">Curso</th>
+                            <th scope="col">Fecha de Asignación</th>
+                            <th scope="col">Última Modificación</th>
+
 
                         </tr>
                         </thead>
 
                         <tbody>
+
+                        <% if (cursosDelDocente.isEmpty() || cursosDelDocente.get(0).getCodigo() == null) { %>
+
+                        <tr>
+                            <td colspan="4">No hay cursos asignados a este docente.</td>
+                        </tr>
+
+                        <% } else { %>
+
                         <%int i = 1;%>
-                        <% for (DocenteEnLista docente : listDocentes) { %>
+                        <% for (Curso curso : cursosDelDocente) { %>
 
                         <tr>
                             <td><%=i%></td>
-                            <td><%=docente.getNombre()%></td>
-                            <td><%=docente.getCorreo()%></td>
+                            <td><%=curso.getCodigo()%> | <%=curso.getNombre()%></td>
 
                             <td>
-                                <% if (docente.getUltimoIngreso() != null) {
+                                <% if (curso.getFechaRegistro() != null) {
                                     java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                                    String formattedDate = dateFormat.format(docente.getUltimoIngreso());
+                                    String formattedDate = dateFormat.format(docente.getFechaRegistro());
                                 %>
                                 <%= formattedDate %>
-                                <% } else { %>
-                                Nunca ha ingresado
                                 <% } %>
                             </td>
 
                             <td>
-                                <%if(docente.getCantCursos() != 0) {%>
-                                <%=docente.getCantCursos()%>
-                                <%} else {%>
-                                Ninguno asignado
-                                <%}%>
+                                <% if (curso.getFechaEdicion() != null) {
+                                    java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                                    String formattedDate = dateFormat.format(docente.getFechaEdicion());
+                                %>
+                                <%= formattedDate %>
+                                <% } %>
                             </td>
-
-                            <td class="text-center">
-                                <a href="decano?action=edit_docentes&id=<%=docente.getIdDocente()%>" class="btn btn-success">
-                                    <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
-                                </a>
-                            </td>
-
-                            <td class="text-center">
-                                <a href="#" class="btn btn-danger btn-borrar" data-docente-id="<%= docente.getIdDocente() %>" data-cant-cursos="<%= docente.getCantCursos() %>">
-                                    <i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
-                                </a>
-                            </td>
-
 
                         </tr>
                         <% i++; } %>
+
+                        <% } %>
+
                         </tbody>
 
                     </table>
@@ -198,6 +231,11 @@
         </div>
     </div>
 </div>
+
+
+
+
+
 
 
 <div class="container mt-1">
@@ -212,90 +250,17 @@
     </footer>
 </div>
 
-
-
-
-<!-- PopUp para confirmar borrado de docentes sin cursos -->
-<div class="modal fade" id="confirmarBorradoModal" tabindex="-1" aria-labelledby="confirmarBorradoModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="confirmarBorradoModalLabel">Confirmar Borrado</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ¿Está seguro de que desea borrar este docente?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-gray" data-bs-dismiss="modal">Cancelar</button>
-                <form id="confirmarBorradoForm" method="POST" action="decano?action=borrar_docentes">
-                    <input type="hidden" name="idDocenteBorrar" id="docenteIdInput" value="">
-                    <button type="submit" class="btn btn-danger" id="confirmarBorradoBtn">Borrar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- PopUp para restringir borrado -->
-<div class="modal fade" id="modalCursosCero" tabindex="-1" aria-labelledby="modalCursosCeroLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalCursosCeroLabel">No se puede borrar</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Este docente no puede ser borrado porque tiene cursos asignados.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-gray" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
 <script>
     $(document).ready(function() {
-        var table = $('#docentes_table').DataTable();
-
-        $('#docentes_table').on('click', '.btn-borrar', function() {
-            var docenteId = $(this).data('docente-id');
-            var cantCursos = $(this).data('cant-cursos');
-
-            if (cantCursos > 0) {
-                $('#modalCursosCero').modal('show');
-            } else {
-                $('#docenteIdInput').val(docenteId);
-                $('#confirmarBorradoModal').modal('show');
-            }
-        });
-    });
-</script>
-
-<script>
-    $(document).ready(function() {
-        $('#docentes_table').DataTable();
-
-        $('.btn-borrar').click(function() {
-            var docenteId = $(this).data('docente-id');
-            var cantCursos = $(this).data('cant-cursos');
-
-            if (cantCursos > 0) {
-                $('#modalCursosCero').modal('show');
-            } else {
-                $('#docenteIdInput').val(docenteId);
-                $('#confirmarBorradoModal').modal('show');
-            }
-        });
+        $('#cursos_table').DataTable();
     });
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="resources/js/main/popper.min.js" type="text/javascript"></script>
 <script src="resources/js/main/functions.js" type="text/javascript"></script>
+
+
 
 </body>
 </html>
