@@ -307,11 +307,76 @@ INSERT INTO `lab_9`.`curso` (`idcurso`, `codigo`, `nombre`, `idfacultad`)
 VALUES ('12', 'TEL140', 'Telemática Forense', '1');
 
 -- -----------------------------------------------------
--- Datos: Tabla rol
+-- Datos: Tabla evaluaciones
 -- -----------------------------------------------------
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('1', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '1');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('2', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '1');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('3', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '1');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('4', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '2');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('5', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '2');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('6', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '2');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('7', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '3');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('8', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '3');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('9', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '3');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('10', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '4');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('11', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '4');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('12', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '4');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('13', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '5');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('14', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '5');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('15', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '5');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('16', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '5');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('17', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '5');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('18', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '5');
 
 
+-- -----------------------------------------------------
+-- Datos: Tabla universidad_has_rector
+-- -----------------------------------------------------
+INSERT INTO `lab_9`.`universidad_has_rector` (`iduniversidad`, `idrector`) VALUES ('1', '2');
 
 -- -----------------------------------------------------
--- Datos: Tabla rol
+-- Datos: Tabla facultad_has_decano
 -- -----------------------------------------------------
+INSERT INTO `lab_9`.`facultad_has_decano` (`idfacultad`, `iddecano`) VALUES ('1', '3');
+
+
+-- -----------------------------------------------------
+-- Datos: Tabla curso_has_docente
+-- -----------------------------------------------------
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('1', '4');
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('2', '4');
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('4', '4');
+
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('1', '3');
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('2', '3');
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('3', '9');
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('4', '3');
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('5', '10');
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('6', '5');
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('7', '7');
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('8', '7');
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('9', '11');
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('10', '11');
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('11', '5');
+INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('12', '5');
+
+UPDATE usuario
+SET password = SHA2(password, 256) WHERE (idrol = 1 OR idrol = 2 OR idrol = 3 OR idrol = 4);

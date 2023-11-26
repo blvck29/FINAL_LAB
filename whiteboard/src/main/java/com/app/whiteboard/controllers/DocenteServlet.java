@@ -45,6 +45,7 @@ public class DocenteServlet extends HttpServlet {
                     case "list_evaluacion":
                         ArrayList<CursoEnLista> cursosValidos = evaluacionesDao.cursosOfDocente(user, facultad);
                         String idCurso = request.getParameter("id") == null? "null" : request.getParameter("id");
+                        String semesterFilter = request.getParameter("semester_filter") == null? "none" : request.getParameter("semester_filter");
 
                         boolean valid = false;
 
@@ -55,8 +56,18 @@ public class DocenteServlet extends HttpServlet {
                         }
 
                         if(valid){
-                            ArrayList<EvaluacionEnLista> evaluacionesList = evaluacionesDao.totalList(idCurso);
+
+                            ArrayList<Semestre> listSemestre = evaluacionesDao.listSemesters();
+                            ArrayList<EvaluacionEnLista> evaluacionesList = new ArrayList<>();
+
+                            if (!(semesterFilter.equals("none"))){
+                                String semester_filter = request.getParameter("semester_filter");
+                                evaluacionesList = evaluacionesDao.filterBySemester(idCurso, semester_filter);
+                            } else {
+                                evaluacionesList = evaluacionesDao.totalList(idCurso);
+                            }
                             Semestre semestre = evaluacionesDao.getCurrentSemestre();
+                            request.setAttribute("listSemestre",listSemestre);
                             request.setAttribute("evaluacionesList", evaluacionesList);
                             request.setAttribute("idCurso",idCurso);
                             request.setAttribute("semestre",semestre);
@@ -134,6 +145,13 @@ public class DocenteServlet extends HttpServlet {
                         evaluacionesDao.editEvaluacion(newNombre,newCodigo,newCorreo,newNota,idEvaluacionEdit);
 
                         response.sendRedirect(request.getContextPath() + "/docente?action=list_evaluacion&id=" + idCurso2);
+                        break;
+
+                    case "filter":
+                        String idSemestreSeleccionado = request.getParameter("semestre");
+                        String idCurso3 = request.getParameter("idCurso");
+                        response.sendRedirect(request.getContextPath() + "/docente?action=list_evaluacion&id=" + idCurso3 + "&semester_filter=" + idSemestreSeleccionado);
+
                         break;
 
                     case "borrar_evaluacion":

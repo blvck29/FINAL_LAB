@@ -53,6 +53,66 @@ public class EvaluacionesDao extends DaoBase {
         return totalList;
     }
 
+
+    public ArrayList<EvaluacionEnLista> filterBySemester(String idCurso, String idSemestre){
+
+        ArrayList<EvaluacionEnLista> totalList = new ArrayList<>();
+
+        String sql = "SELECT ev.idevaluaciones, ev.nombre_estudiantes, ev.codigo_estudiantes, ev.correo_estudiantes, ev.nota, ev.idcurso, ev.idsemestre, ev.fecha_registro, ev.fecha_edicion FROM evaluaciones ev\n" +
+                "LEFT JOIN semestre s ON (ev.idsemestre = s.idsemestre) LEFT JOIN curso c ON (ev.idcurso = c.idcurso) WHERE ev.idcurso = ? AND ev.idsemestre = ?;";
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, idCurso);
+            pstmt.setString(2, idSemestre);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+
+                while (rs.next()) {
+                    EvaluacionEnLista evaluacion = new EvaluacionEnLista();
+
+                    evaluacion.setIdEvaluaciones(rs.getInt(1));
+                    evaluacion.setNombreEstudiantes(rs.getString(2));
+                    evaluacion.setCodigoEstudiantes(rs.getString(3));
+                    evaluacion.setCorreoEstudiantes(rs.getString(4));
+                    evaluacion.setNota(rs.getInt(5));
+                    evaluacion.setCurso(getCurso(rs.getString(6)));
+                    evaluacion.setSemestre(getSemestre(rs.getString(7)));
+                    evaluacion.setFechaRegistro(rs.getTimestamp(8));
+                    evaluacion.setFechaEdicion(rs.getTimestamp(9));
+
+                    totalList.add(evaluacion);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return totalList;
+    }
+
+
+    public ArrayList<Semestre> listSemesters(){
+        ArrayList<Semestre> listSemesters = new ArrayList<>();
+
+        String sql = "SELECT * FROM lab_9.semestre;";
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            try (ResultSet rs = pstmt.executeQuery()) {
+
+                while (rs.next()) {
+                    Semestre semestre = new Semestre();
+                    semestre.setIdSemestre(rs.getInt(1));
+                    semestre.setNombre(rs.getString(2));
+                    listSemesters.add(semestre);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listSemesters;
+    }
+
     public EvaluacionEnLista findEvaluacion(String idEvaluacion){
 
         EvaluacionEnLista evaluacion = new EvaluacionEnLista();

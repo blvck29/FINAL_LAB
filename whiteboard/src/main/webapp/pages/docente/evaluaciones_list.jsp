@@ -10,6 +10,7 @@
     if (user!= null && request.getSession(false) != null && user.getIdRol() == 4){
 %>
 
+<% ArrayList<Semestre> listSemestre = (ArrayList<Semestre>) request.getAttribute("listSemestre"); %>
 <% ArrayList<EvaluacionEnLista> evaluacionesList = (ArrayList<EvaluacionEnLista>) request.getAttribute("evaluacionesList"); %>
 <% String idCurso = (String) request.getAttribute("idCurso"); %>
 <% Semestre semestreActual = (Semestre) request.getAttribute("semestre"); %>
@@ -24,15 +25,34 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">    <link rel="icon" type="image/png" href="favicon.png"/>
 
-    <!-- DataTables -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Source+Sans+Pro:400,600,700" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/9f54847310.js" crossorigin="anonymous"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Source+Sans+Pro:400,600,700" rel="stylesheet">
+
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+    <title>Cursos | Whiteboard</title>
+    <link rel="icon" type="image/png" href="favicon.png"/>
+
     <!-- Main CSS -->
     <link href="resources/css/main.css" rel="stylesheet"/>
 
@@ -122,13 +142,36 @@
 
 <div class="container">
 
-    <div class="row pb-1">
-        <div class="col-md-6">
-            <h2 class="h3 font-weight-bold pb-1">
-                Lista de Notas del Curso
-            </h2>
-        </div>
-    </div>
+        <form action="docente?action=filter" method="POST">
+
+            <div class="row pb-3">
+                <div class="col-md-6">
+                    <h2 class="h3 font-weight-bold pb-3">
+                        Lista de Notas del Curso
+                    </h2>
+                </div>
+                <div class="col-md-6 text-right">
+                    <div class="col">
+                        <button type="submit" class="btn btn-gray">Aplicar Filtro</button>
+                        <a href="docente?action=list_evaluacion&id=<%=idCurso%>" class="btn btn-gray mb-2 ml-md-2" style="margin-top: 6px">Borrar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dropdown-container">
+                <select class="form-control mb-2 mr-sm-2 js-select2" name="semestre" id="semestreSelect" placeholder="semestre">
+                    <option value="" selected disabled hidden>Filtrar Semestre</option>
+                    <% for (Semestre semestre : listSemestre) { %>
+                    <option value="<%=semestre.getIdSemestre()%>"><%=semestre.getNombre()%></option>
+                    <% } %>
+                </select>
+            </div>
+            <input type="hidden" name="idCurso" value="<%=idCurso%>">
+        </form>
+
+
+
+
     <hr>
 
     <div class="pt-2 pb-0 position-relative">
@@ -159,7 +202,7 @@
                         <% if (evaluacionesList.isEmpty() || evaluacionesList.get(0).getNombreEstudiantes() == null) { %>
 
                         <tr>
-                            <td colspan="10">No hay evaluaciones registradas para este curso.</td>
+                            <td colspan="10">No se hallaron evaluaciones.</td>
                         </tr>
 
                         <% } else { %>
@@ -249,7 +292,7 @@
 
 
 
-<!-- PopUp para confirmar borrado de docentes sin cursos -->
+<!-- PopUp para confirmar borrado de registros -->
 <div class="modal fade" id="confirmarBorradoModal" tabindex="-1" aria-labelledby="confirmarBorradoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -273,6 +316,11 @@
 </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+<script src="resources/js/main/popper.min.js" type="text/javascript"></script>
+<script src="resources/js/main/functions.js" type="text/javascript"></script>
+
 <script>
     $(document).ready(function() {
         var table = $('#evaluaciones_table').DataTable();
@@ -287,9 +335,12 @@
     });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<script src="resources/js/main/popper.min.js" type="text/javascript"></script>
-<script src="resources/js/main/functions.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        $(".js-select2").select2();
+    });
+</script>
+
 
 </body>
 </html>
