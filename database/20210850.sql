@@ -309,43 +309,77 @@ VALUES ('12', 'TEL140', 'Telemática Forense', '1');
 -- -----------------------------------------------------
 -- Datos: Tabla evaluaciones
 -- -----------------------------------------------------
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('1', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '1');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('2', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '1');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('3', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '1');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('4', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '2');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('5', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '2');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('6', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '2');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('7', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '3');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('8', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '3');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('9', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '3');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('10', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '4');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('11', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '4');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('12', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '4');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('13', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '5');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('14', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '5');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('15', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '5');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('16', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '5');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('17', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '5');
-INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
-VALUES ('18', 'Pablo Flores', '20202020', 'pablo@pucp.edu.pe', '20', '2', '5');
 
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('1', 'Alumno 1', '20206545', '20206545@pucp.edu.pe', '08', '1', '1');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('2', 'Alumno 1', '20206545', '20206545@pucp.edu.pe', '15', '1', '2');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('3', 'Alumno 1', '20206545', '20206545@pucp.edu.pe', '17', '2', '3');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('4', 'Alumno 1', '20206545', '20206545@pucp.edu.pe', '10', '4', '4');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('5', 'Alumno 1', '20206545', '20206545@pucp.edu.pe', '14', '4', '5');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('6', 'Alumno 1', '20206545', '20206545@pucp.edu.pe', '08', '1', '3');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('7', 'Alumno 1', '20206545', '20206545@pucp.edu.pe', '15', '1', '4');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('8', 'Alumno 1', '20206545', '20206545@pucp.edu.pe', '17', '2', '5');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('9', 'Alumno 1', '20206545', '20206545@pucp.edu.pe', '10', '4', '2');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('10', 'Alumno 1', '20206545', '20206545@pucp.edu.pe', '14', '4', '1');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('11', 'Alumno 2', '20206684', '20206684@pucp.edu.pe', '11', '1', '1');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('12', 'Alumno 2', '20206684', '20206684@pucp.edu.pe', '12', '1', '1');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('13', 'Alumno 2', '20206684', '20206684@pucp.edu.pe', '15', '1', '5');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('14', 'Alumno 2', '20206684', '20206684@pucp.edu.pe', '09', '2', '2');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('15', 'Alumno 2', '20206684', '20206684@pucp.edu.pe', '14', '2', '3');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('16', 'Alumno 2', '20206684', '20206684@pucp.edu.pe', '11', '4', '3');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('17', 'Alumno 2', '20206684', '20206684@pucp.edu.pe', '16', '4', '4');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('18', 'Alumno 2', '20206684', '20206684@pucp.edu.pe', '19', '4', '5');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('19', 'Alumno 3', '20203987', '20203987@pucp.edu.pe', '18', '1', '1');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('20', 'Alumno 3', '20203987', '20203987@pucp.edu.pe', '18', '1', '2');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('21', 'Alumno 3', '20203987', '20203987@pucp.edu.pe', '18', '1', '4');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('22', 'Alumno 3', '20203987', '20203987@pucp.edu.pe', '18', '2', '5');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('23', 'Alumno 3', '20203987', '20203987@pucp.edu.pe', '18', '2', '3');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('24', 'Alumno 3', '20203987', '20203987@pucp.edu.pe', '18', '2', '1');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('25', 'Alumno 3', '20203987', '20203987@pucp.edu.pe', '18', '4', '3');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('26', 'Alumno 3', '20203987', '20203987@pucp.edu.pe', '18', '4', '1');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('27', 'Alumno 4', '20217150', '20217150@pucp.edu.pe', '11', '1', '5');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('28', 'Alumno 4', '20217150', '20217150@pucp.edu.pe', '11', '2', '5');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('29', 'Alumno 4', '20217150', '20217150@pucp.edu.pe', '11', '4', '5');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('30', 'Alumno 5', '20209851', '20209851@pucp.edu.pe', '19', '1', '2');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('31', 'Alumno 5', '20209851', '20209851@pucp.edu.pe', '19', '2', '4');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('32', 'Alumno 5', '20209851', '20209851@pucp.edu.pe', '19', '4', '5');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('33', 'Alumno 6', '20216697', '20216697@pucp.edu.pe', '14', '1', '2');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('34', 'Alumno 6', '20216697', '20216697@pucp.edu.pe', '14', '2', '3');
+INSERT INTO `lab_9`.`evaluaciones` (`idevaluaciones`, `nombre_estudiantes`, `codigo_estudiantes`, `correo_estudiantes`, `nota`, `idcurso`, `idsemestre`) 
+VALUES ('35', 'Alumno 6', '20216697', '20216697@pucp.edu.pe', '14', '4', '3');
 
 -- -----------------------------------------------------
 -- Datos: Tabla universidad_has_rector
@@ -364,7 +398,6 @@ INSERT INTO `lab_9`.`facultad_has_decano` (`idfacultad`, `iddecano`) VALUES ('1'
 INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('1', '4');
 INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('2', '4');
 INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('4', '4');
-
 INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('1', '3');
 INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('2', '3');
 INSERT INTO `lab_9`.`curso_has_docente` (`idcurso`, `iddocente`) VALUES ('3', '9');
