@@ -10,6 +10,7 @@ public class CursoEnLista {
     private Timestamp fechaEdicion;
     private Timestamp fechaRegistro;
     private int cantDocentes;
+    private int cantEvaluaciones;
 
     public int getIdCurso() {
         return idCurso;
@@ -57,5 +58,13 @@ public class CursoEnLista {
 
     public void setCantDocentes(int cantDocentes) {
         this.cantDocentes = cantDocentes;
+    }
+
+    public int getCantEvaluaciones() {
+        return cantEvaluaciones;
+    }
+
+    public void setCantEvaluaciones(int cantEvaluaciones) {
+        this.cantEvaluaciones = cantEvaluaciones;
     }
 }

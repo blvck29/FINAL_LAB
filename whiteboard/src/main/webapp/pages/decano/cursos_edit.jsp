@@ -2,6 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.app.whiteboard.model.dtos.DocenteEnLista" %>
 <%@ page import="com.app.whiteboard.model.beans.Curso" %>
+<%@ page import="com.app.whiteboard.model.dtos.CursoEnLista" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <%
@@ -9,8 +10,8 @@
     if (user!= null && request.getSession(false) != null && user.getIdRol() == 3){
 %>
 
-<% DocenteEnLista docente = (DocenteEnLista) request.getAttribute("docente"); %>
-<% ArrayList<Curso> cursosDelDocente = (ArrayList<Curso>) request.getAttribute("cursosDelDocente"); %>
+<% CursoEnLista curso = (CursoEnLista) request.getAttribute("curso"); %>
+<% ArrayList<DocenteEnLista> docentesDelCurso = (ArrayList<DocenteEnLista>) request.getAttribute("docentesDelCurso"); %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -91,31 +92,24 @@
         <div class="p-2 h-100 tofront">
             <div class="row">
 
-
                 <form class="form-inline" method="POST" action="decano?action=edit_docentes">
-                    <input type="hidden" name="idEditar" value="<%=docente.getIdDocente()%>">
+                    <input type="hidden" name="idEditar" value="<%=curso.getIdCurso()%>">
                     <div class="col">
                         <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                            <label for="nombre">Nombre</label>
-                            <input required type="text" class="form-control mb-2 mr-sm-2" name="nombre" id="nombre" value="<%=docente.getNombre()%>">
+                            <label for="codigo">Código</label>
+                            <input disabled required type="text" class="form-control mb-2 mr-sm-2" name="codigo" id="codigo" value="<%=curso.getCodigo()%>">
                         </div>
                     </div>
                     <div class="col">
                         <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                            <label for="correo">Correo</label>
-                            <input disabled type="text" class="form-control mb-2 mr-sm-2" name="correo" id="correo" placeholder="<%=docente.getCorreo()%>">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                            <label for="password">Contraseña</label>
-                            <input disabled type="text" class="form-control mb-2 mr-sm-2" name="password" id="password" placeholder="*********">
+                            <label for="nombre" style="width: 250px;">nombre</label>
+                            <input  type="text" class="form-control mb-2 mr-sm-2" name="nombre" id="nombre" placeholder="<%=curso.getNombre()%>">
                         </div>
                     </div>
 
                     <div class="col">
                         <button type="submit" class="btn btn-primary mb-2">Guardar</button>
-                        <a href="decano?action=docentes" class="btn btn-gray mb-2 ml-md-2">Cancelar</a>
+                        <a href="decano?action=cursos" class="btn btn-gray mb-2 ml-md-2">Cancelar</a>
                     </div>
                 </form>
             </div>
@@ -126,9 +120,9 @@
         <div class="col-md-4">
             <p>Última edición:
                 <% String fEdit = null;
-                    if (docente.getFechaEdicion() != null) {
+                    if (curso.getFechaEdicion() != null) {
                         java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                        fEdit = dateFormat.format(docente.getFechaEdicion());
+                        fEdit = dateFormat.format(curso.getFechaEdicion());
                     } else { fEdit = "Nunca editado"; } %>
                 <%=fEdit%>
             </p>
@@ -137,21 +131,21 @@
         <div class="col-md-4">
             <p>Fecha de Creación:
                 <% String fCreation = null;
-                    if (docente.getFechaRegistro() != null) {
+                    if (curso.getFechaRegistro() != null) {
                         java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                        fCreation = dateFormat.format(docente.getFechaRegistro());
+                        fCreation = dateFormat.format(curso.getFechaRegistro());
                     } else { fCreation = " "; }%>
                 <%=fCreation%>
             </p>
         </div>
 
         <div class="col-md-4">
-            <p>Accesos a la Plataforma:
+            <p>Evaluaciones:
                 <% String value = null;
-                    if (docente.getCantIngresos() > 0) {
-                        int cantLogins = docente.getCantIngresos();
-                        value = String.valueOf(cantLogins) + " veces";
-                    } else { value = "Nunca ha ingresado"; }%>
+                    if (curso.getCantEvaluaciones() > 0) {
+                        int cantLogins = curso.getCantEvaluaciones();
+                        value = String.valueOf(cantLogins) + " evaluaciones";
+                    } else { value = "Ninguna"; }%>
                 <%=value%>
             </p>
         </div>
@@ -172,7 +166,7 @@
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Curso</th>
+                            <th scope="col">Docente</th>
                             <th scope="col">Fecha de Asignación</th>
                             <th scope="col">Última Modificación</th>
 
@@ -182,23 +176,23 @@
 
                         <tbody>
 
-                        <% if (cursosDelDocente.isEmpty() || cursosDelDocente.get(0).getCodigo() == null) { %>
+                        <% if (docentesDelCurso.isEmpty() || docentesDelCurso.get(0).getNombre() == null) { %>
 
                         <tr>
-                            <td colspan="4">No hay cursos asignados a este docente.</td>
+                            <td colspan="4">No hay docentes asignados a este curso.</td> <!-- Nunca sucede porque el curso debe tener un docente mínimo -->
                         </tr>
 
                         <% } else { %>
 
                         <%int i = 1;%>
-                        <% for (Curso curso : cursosDelDocente) { %>
+                        <% for (DocenteEnLista docente : docentesDelCurso) { %>
 
                         <tr>
                             <td><%=i%></td>
-                            <td><%=curso.getCodigo()%> | <%=curso.getNombre()%></td>
+                            <td><%=docente.getNombre()%></td>
 
                             <td>
-                                <% if (curso.getFechaRegistro() != null) {
+                                <% if (docente.getFechaRegistro() != null) {
                                     java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                                     String formattedDate = dateFormat.format(docente.getFechaRegistro());
                                 %>
@@ -207,7 +201,7 @@
                             </td>
 
                             <td>
-                                <% if (curso.getFechaEdicion() != null) {
+                                <% if (docente.getFechaEdicion() != null) {
                                     java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                                     String formattedDate = dateFormat.format(docente.getFechaEdicion());
                                 %>

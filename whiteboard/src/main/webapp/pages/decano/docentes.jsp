@@ -1,5 +1,4 @@
 <%@ page import="com.app.whiteboard.model.beans.Usuario" %>
-<%@ page import="com.app.whiteboard.model.beans.Facultad" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.app.whiteboard.model.dtos.DocenteEnLista" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
@@ -181,7 +180,7 @@
                                 </td>
 
                                 <td class="text-center">
-                                    <a href="#" class="btn btn-danger btn-borrar" data-docente-id="<%= docente.getIdDocente() %>" data-cant-cursos="<%= docente.getCantCursos() %>">
+                                    <a href="#" class="btn btn-danger btn-borrar" data-docente-id="<%= docente.getIdDocente() %>" data-cant-cursos="<%=docente.getCantCursos()%>">
                                         <i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
                                     </a>
                                 </td>
@@ -261,24 +260,6 @@
 <script>
     $(document).ready(function() {
         var table = $('#docentes_table').DataTable();
-
-        $('#docentes_table').on('click', '.btn-borrar', function() {
-            var docenteId = $(this).data('docente-id');
-            var cantCursos = $(this).data('cant-cursos');
-
-            if (cantCursos > 0) {
-                $('#modalCursosCero').modal('show');
-            } else {
-                $('#docenteIdInput').val(docenteId);
-                $('#confirmarBorradoModal').modal('show');
-            }
-        });
-    });
-</script>
-
-<script>
-    $(document).ready(function() {
-        $('#docentes_table').DataTable();
 
         $('.btn-borrar').click(function() {
             var docenteId = $(this).data('docente-id');

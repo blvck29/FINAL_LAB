@@ -88,17 +88,6 @@ public class DocentesDao extends DaoBase {
     }
 
 
-    public ArrayList<Curso> cursosOfDocente(){
-
-        ArrayList<Curso> listCursos = new ArrayList<>();
-
-
-
-
-        return listCursos;
-    }
-
-
     public ArrayList<Curso> cursosOfDocente(String idDocente,Facultad facultad) {
 
         ArrayList<Curso> listCursos = new ArrayList<>();
