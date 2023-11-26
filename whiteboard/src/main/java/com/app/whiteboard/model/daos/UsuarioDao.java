@@ -148,9 +148,9 @@ public class UsuarioDao extends DaoBase {
                 while(rs.next()){
                     facultad.setIdFacultad(rs.getInt(3));
                     facultad.setNombre(rs.getString(4));
-                    facultad.setUniversidad(getUniversity(rs.getString(5), user));
-                    facultad.setFechaRegistro(rs.getDate(6));
-                    facultad.setFechaEdicion(rs.getDate(7));
+                    facultad.setUniversidad(getUniversity(rs.getString(5)));
+                    facultad.setFechaRegistro(rs.getTimestamp(6));
+                    facultad.setFechaEdicion(rs.getTimestamp(7));
                 }
             }
         } catch (SQLException e){
@@ -159,7 +159,44 @@ public class UsuarioDao extends DaoBase {
 
         return facultad;
     }
-    public Universidad getUniversity(String idUniversidad, Usuario user) {
+
+
+    public Facultad getFacultadDocente(Usuario user){
+        int idDocente = user.getIdUsuario();
+        Facultad facultad = null;
+
+        String sql = "SELECT c_d.iddocente, f.idfacultad, f.nombre, f.iduniversidad, f.fecha_registro, f.fecha_edicion FROM curso_has_docente c_d \n" +
+                "INNER JOIN curso c ON (c_d.idcurso = c.idcurso)\n" +
+                "INNER JOIN facultad f ON (c.idfacultad = f.idfacultad)\n" +
+                "WHERE c_d.iddocente = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)){
+
+            pstmt.setInt(1, idDocente);
+
+            try(ResultSet rs = pstmt.executeQuery()){
+
+                if(rs.next()){
+                    facultad = new Facultad();
+                }
+
+                while(rs.next()){
+                    facultad.setIdFacultad(rs.getInt(2));
+                    facultad.setNombre(rs.getString(3));
+                    facultad.setUniversidad(getUniversity(rs.getString(4)));
+                    facultad.setFechaRegistro(rs.getTimestamp(5));
+                    facultad.setFechaEdicion(rs.getTimestamp(6));
+                }
+            }
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return facultad;
+    }
+
+
+    public Universidad getUniversity(String idUniversidad) {
         Universidad universidad = new Universidad();
         String sql = "SELECT * FROM universidad u WHERE u.iduniversidad = ?;";
 
@@ -175,8 +212,8 @@ public class UsuarioDao extends DaoBase {
                     universidad.setNombre(rs.getString(2));
                     universidad.setLogoUrl(rs.getString(3));
                     universidad.setAdministrador(getUser(rs.getInt(4)));
-                    universidad.setFechaRegistro(rs.getDate(5));
-                    universidad.setFechaEdicion(rs.getDate(6));
+                    universidad.setFechaRegistro(rs.getTimestamp(5));
+                    universidad.setFechaEdicion(rs.getTimestamp(6));
                 }
 
             }

@@ -1,14 +1,16 @@
 package com.app.whiteboard.model.beans;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.DateTimeException;
 
 public class Semestre {
     private int idSemestre;
     private String nombre;
     private Usuario administrador;
     private boolean habilitado;
-    private Date fechaRegistro;
-    private Date fechaEdicion;
+    private Timestamp fechaRegistro;
+    private Timestamp fechaEdicion;
 
     public int getIdSemestre() {
         return idSemestre;
@@ -42,19 +44,19 @@ public class Semestre {
         this.habilitado = habilitado;
     }
 
-    public Date getFechaRegistro() {
+    public Timestamp getFechaRegistro() {
         return fechaRegistro;
     }
 
-    public void setFechaRegistro(Date fechaRegistro) {
+    public void setFechaRegistro(Timestamp fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public Date getFechaEdicion() {
+    public Timestamp getFechaEdicion() {
         return fechaEdicion;
     }
 
-    public void setFechaEdicion(Date fechaEdicion) {
+    public void setFechaEdicion(Timestamp fechaEdicion) {
         this.fechaEdicion = fechaEdicion;
     }
 }

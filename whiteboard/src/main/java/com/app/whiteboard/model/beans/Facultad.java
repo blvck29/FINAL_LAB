@@ -1,13 +1,14 @@
 package com.app.whiteboard.model.beans;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Facultad {
     private int idFacultad;
     private String nombre;
     private Universidad universidad;
-    private Date fechaRegistro;
-    private Date fechaEdicion;
+    private Timestamp fechaRegistro;
+    private Timestamp fechaEdicion;
 
     public int getIdFacultad() {
         return idFacultad;
@@ -33,19 +34,19 @@ public class Facultad {
         this.universidad = universidad;
     }
 
-    public Date getFechaRegistro() {
+    public Timestamp getFechaRegistro() {
         return fechaRegistro;
     }
 
-    public void setFechaRegistro(Date fechaRegistro) {
+    public void setFechaRegistro(Timestamp fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public Date getFechaEdicion() {
+    public Timestamp getFechaEdicion() {
         return fechaEdicion;
     }
 
-    public void setFechaEdicion(Date fechaEdicion) {
+    public void setFechaEdicion(Timestamp fechaEdicion) {
         this.fechaEdicion = fechaEdicion;
     }
 }

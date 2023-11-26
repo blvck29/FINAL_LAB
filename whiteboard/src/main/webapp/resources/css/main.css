@@ -7394,6 +7394,7 @@ button.bg-lightblue:focus {
 .text-center {
     text-align: center !important; }
 
+
 @media (min-width: 576px) {
     .text-sm-left {
         text-align: left !important; }

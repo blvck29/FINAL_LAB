@@ -148,6 +148,12 @@ public class DecanoServlet extends HttpServlet {
                         break;
 
                     case "edit_cursos":
+                        String idEditar1 = request.getParameter("idEditar");
+                        String nuevoNombre1 = request.getParameter("nombre");
+
+                        cursosDao.editDocente(idEditar1,nuevoNombre1);
+
+                        response.sendRedirect(request.getContextPath() + "/decano?action=cursos");
                         break;
 
                     case "borrar_cursos":
@@ -169,9 +175,6 @@ public class DecanoServlet extends HttpServlet {
             session.invalidate();
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
-
-
-
 
     }
 }

@@ -206,6 +206,24 @@ public class CursosDao extends DaoBase {
     }
 
 
+    public void editDocente(String idEditar, String nuevoNombre){
+        String sql = "UPDATE curso SET nombre = ? WHERE (idcurso = ?)";
+        try(Connection conn = getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1,nuevoNombre);
+            pstmt.setString(2,idEditar);
+            pstmt.executeUpdate();
+
+            updateDatesAtEdit(idEditar);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
     public void borrarCurso(String idBorrar){
 
         String sql = "DELETE FROM curso_has_docente WHERE idcurso = ?";

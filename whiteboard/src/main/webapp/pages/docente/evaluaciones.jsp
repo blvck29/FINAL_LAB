@@ -1,22 +1,21 @@
 <%@ page import="com.app.whiteboard.model.beans.Usuario" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.app.whiteboard.model.dtos.DocenteEnLista" %>
-<%@ page import="com.app.whiteboard.model.beans.Curso" %>
 <%@ page import="com.app.whiteboard.model.dtos.CursoEnLista" %>
+<%@ page import="com.app.whiteboard.model.beans.Curso" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <%
     Usuario user = (Usuario) session.getAttribute("usuario");
-    if (user!= null && request.getSession(false) != null && user.getIdRol() == 3){
+    if (user!= null && request.getSession(false) != null && user.getIdRol() == 4){
 %>
 
-<% CursoEnLista curso = (CursoEnLista) request.getAttribute("curso"); %>
-<% ArrayList<DocenteEnLista> docentesDelCurso = (ArrayList<DocenteEnLista>) request.getAttribute("docentesDelCurso"); %>
+<% ArrayList<CursoEnLista> cursosDelDocente = (ArrayList<CursoEnLista>) request.getAttribute("cursosDelDocente"); %>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Docentes | Whiteboard</title>
+    <title>Evaluaciones | Whiteboard</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'/>
@@ -42,11 +41,12 @@
 
 <body>
 
+
 <nav class="topnav navbar navbar-expand-lg navbar-light bg-no-white fixed-top">
     <div class="container">
         <div>
             <img src="favicon.png" width="50px" height="auto" alt="logo" style="padding-right: 10px; padding-bottom: 5px">
-            <a class="navbar-brand" href="decano?action=home" style="letter-spacing: 3px;"><strong>WHITEBOARD</strong></a>
+            <a class="navbar-brand" href="docente?action=home" style="letter-spacing: 3px;"><strong>WHITEBOARD</strong></a>
         </div>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,13 +56,10 @@
             <ul class="navbar-nav mr-auto d-flex align-items-center">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="decano?action=home">Inicio</a>
+                    <a class="nav-link" href="docente?action=home">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="decano?action=docentes">Docentes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="decano?action=cursos">Cursos</a>
+                    <a class="nav-link" href="docente?action=evaluaciones">Evaluaciones</a>
                 </li>
 
             </ul>
@@ -79,10 +76,10 @@
 
 <div class="container">
 
-    <div class="row mt-4 pb-1">
+    <div class="row pb-1">
         <div class="col-md-6">
             <h2 class="h3 font-weight-bold pb-1">
-                Editar Docente
+                Elija un Curso para continuar
             </h2>
         </div>
     </div>
@@ -90,139 +87,72 @@
 
     <div class="pt-2 pb-0 position-relative">
         <div class="p-2 h-100 tofront">
-            <div class="row">
-
-                <form class="form-inline" method="POST" action="decano?action=edit_cursos">
-                    <input type="hidden" name="idEditar" value="<%=curso.getIdCurso()%>">
-
-                    <div class="row col-md-6">
-                        <div class="col-md-12 mb-2">
-                            <label for="nombre" style="text-align: left; display: block;">Nombre</label>
-                            <input type="text" class="form-control-color" style="width: 30rem !important;" name="nombre" id="nombre" value="<%=curso.getNombre()%>">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-2">
-                            <label for="codigo" style="text-align: left; display: block;">Código</label>
-                            <input disabled required type="text" class="form-control" name="codigo" id="codigo" value="<%=curso.getCodigo()%>">
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button type="submit" class="btn btn-primary btn-block mb-2">Guardar</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="decano?action=cursos" class="btn btn-gray btn-block">Cancelar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="row pt-2">
-        <div class="col-md-4">
-            <p>Última edición:
-                <% String fEdit = null;
-                    if (curso.getFechaEdicion() != null) {
-                        java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                        fEdit = dateFormat.format(curso.getFechaEdicion());
-                    } else { fEdit = "Nunca editado"; } %>
-                <%=fEdit%>
-            </p>
-        </div>
-
-        <div class="col-md-4">
-            <p>Fecha de Creación:
-                <% String fCreation = null;
-                    if (curso.getFechaRegistro() != null) {
-                        java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                        fCreation = dateFormat.format(curso.getFechaRegistro());
-                    } else { fCreation = " "; }%>
-                <%=fCreation%>
-            </p>
-        </div>
-
-        <div class="col-md-4">
-            <p>Evaluaciones:
-                <% String value = null;
-                    if (curso.getCantEvaluaciones() > 0) {
-                        int cantLogins = curso.getCantEvaluaciones();
-                        value = String.valueOf(cantLogins) + " evaluaciones";
-                    } else { value = "Ninguna"; }%>
-                <%=value%>
-            </p>
-        </div>
-    </div>
-
-    <hr>
-
-
-
-    <div class="pt-2 pb-0 position-relative">
-        <div class="p-2 h-100 tofront">
             <div class="row justify-content-between">
 
                 <div class="table-container">
-                    <table class="table table-hover align-self-center table-bordered" id="cursos_table">
+                    <table class="table table-hover align-self-center table-bordered" id="evaluaciones_table">
 
 
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Docente</th>
+                            <th scope="col">Curso</th>
                             <th scope="col">Fecha de Asignación</th>
                             <th scope="col">Última Modificación</th>
-
+                            <th scope="col">Editar</th>
 
                         </tr>
                         </thead>
 
                         <tbody>
 
-                        <% if (docentesDelCurso.isEmpty() || docentesDelCurso.get(0).getNombre() == null) { %>
+                        <% if (cursosDelDocente.isEmpty() || cursosDelDocente.get(0).getNombre() == null) { %>
 
                         <tr>
-                            <td colspan="4">No hay docentes asignados a este curso.</td> <!-- Nunca sucede porque el curso debe tener un docente mínimo -->
+                            <td colspan="9">No hay evaluaciones registradas para este curso.</td>
                         </tr>
 
                         <% } else { %>
 
+
                         <%int i = 1;%>
-                        <% for (DocenteEnLista docente : docentesDelCurso) { %>
+                        <% for (CursoEnLista curso : cursosDelDocente) { %>
 
                         <tr>
                             <td><%=i%></td>
-                            <td><%=docente.getNombre()%></td>
+
+                            <td><%=curso.getCodigo()%> | <%=curso.getNombre()%></td>
 
                             <td>
-                                <% if (docente.getFechaRegistro() != null) {
+                                <% if (curso.getFechaRegistro() != null) {
                                     java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                                    String formattedDate = dateFormat.format(docente.getFechaRegistro());
+                                    String formattedDate = dateFormat.format(curso.getFechaRegistro());
                                 %>
                                 <%= formattedDate %>
                                 <% } %>
                             </td>
 
                             <td>
-                                <% if (docente.getFechaEdicion() != null) {
+                                <% if (curso.getFechaEdicion() != null) {
                                     java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                                    String formattedDate = dateFormat.format(docente.getFechaEdicion());
+                                    String formattedDate = dateFormat.format(curso.getFechaEdicion());
                                 %>
                                 <%= formattedDate %>
                                 <% } %>
                             </td>
+
+
+                            <td class="text-center">
+                                <a href="docente?action=list_evaluacion&id=<%=curso.getIdCurso()%>" class="btn btn-success">
+                                    <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+                                </a>
+                            </td>
+
 
                         </tr>
                         <% i++; } %>
 
                         <% } %>
-
                         </tbody>
 
                     </table>
@@ -233,11 +163,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
 
 
 <div class="container mt-1">
@@ -252,17 +177,18 @@
     </footer>
 </div>
 
+
+
 <script>
     $(document).ready(function() {
-        $('#cursos_table').DataTable();
+        var table = $('#evaluaciones_table').DataTable();
     });
 </script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="resources/js/main/popper.min.js" type="text/javascript"></script>
 <script src="resources/js/main/functions.js" type="text/javascript"></script>
-
-
 
 </body>
 </html>

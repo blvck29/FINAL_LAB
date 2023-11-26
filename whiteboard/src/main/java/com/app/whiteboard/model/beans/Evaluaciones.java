@@ -12,4 +12,6 @@ public class Evaluaciones {
     private Semestre semestre;
     private Date fechaRegistro;
     private Date fechaEdicion;
+
+
 }

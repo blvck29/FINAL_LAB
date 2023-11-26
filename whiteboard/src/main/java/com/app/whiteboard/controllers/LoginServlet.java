@@ -53,6 +53,7 @@ public class LoginServlet extends HttpServlet {
                             break;
 
                         case 4: // Docente
+                            response.sendRedirect("docente");
                             break;
                     }
 
